@@ -7,10 +7,9 @@ import { MatCardModule } from '@angular/material/card';
   standalone: true,
   imports: [MatCardModule, MatButtonModule],
   templateUrl: './input-child.component.html',
-  styleUrl: './input-child.component.css'
+  styleUrl: './input-child.component.css',
 })
 export class InputChildComponent {
-
   nombre = input<string>();
   edad = input(0, { alias: 'age' });
   edadEn5Anios = computed(() => this.edad() + 5);
@@ -18,8 +17,11 @@ export class InputChildComponent {
   apellido = input.required<string>();
 
   deshabilitado = input(false, {
-    transform: (value: boolean | string) => (typeof value === 'string') ? value === '' : value
-  })
+    transform: (value: boolean | string) =>
+      typeof value === 'string' ? value === '' : value,
+  });
 
-  texto = signal<string>(`Conocido en el mundo de la tecnología por su habilidad para transformar ideas complejas en soluciones simples y elegantes. Desde niño, su curiosidad por las computadoras lo llevó a desarmar y armar cada dispositivo que encontraba. A los quince años, ya había creado su primera aplicación móvil, una herramienta que ayudaba a sus compañeros de escuela a organizar sus tareas y proyectos.`);
+  texto = signal<string>(
+    `Conocido en el mundo de la tecnología por su habilidad para transformar ideas complejas en soluciones simples y elegantes. Desde niño, su curiosidad por las computadoras lo llevó a desarmar y armar cada dispositivo que encontraba. A los quince años, ya había creado su primera aplicación móvil, una herramienta que ayudaba a sus compañeros de escuela a organizar sus tareas y proyectos.`
+  );
 }
